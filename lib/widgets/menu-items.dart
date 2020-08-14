@@ -2,6 +2,7 @@ import 'package:dailyfood/common/color-common-constant.dart';
 import 'package:dailyfood/screens/all-screen.dart';
 import 'package:dailyfood/screens/pizza-screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 enum Menu { all, pizza, burgers, dessert, seafood }
 
@@ -19,7 +20,7 @@ class _MenuItemsState extends State<MenuItems>{
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+          padding: const EdgeInsets.only(top: 10.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
@@ -30,13 +31,24 @@ class _MenuItemsState extends State<MenuItems>{
               RichText(
                   text: TextSpan(
                       text: 'Top Picks For You',
-                      style: TextStyle(
+                      style: GoogleFonts.notoSans(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ))),
             ],
           ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: RichText(
+              text: TextSpan(
+                  text: 'Deliciousness jumping into the mouth',
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.blueGrey,
+                  ))),
         ),
         Padding(
           padding: const EdgeInsets.only(top: 10.0, left: 15.0, right: 15.0),
@@ -129,7 +141,7 @@ class _MenuItemsState extends State<MenuItems>{
                           selectedMenu = Menu.seafood;
                         });
                       },
-                      child: Text("Sea Food",
+                      child: Text("Seafood",
                           style: TextStyle(
                               color: (selectedMenu == Menu.seafood)
                                   ? Colors.white
@@ -390,7 +402,7 @@ class _MenuItemsState extends State<MenuItems>{
                     'assets/images/chocolate-almond-torte.png',
                     height: 80.0,
                   ),
-                  'Chocolate Almond \nTorte',
+                  'Chocolate Almond Torte',
                   'The Bakery',
                   'Php 280.00',
                   Icons.bookmark, 'chocolate'),
@@ -527,9 +539,8 @@ Widget foodTemplate(Image image, String title, String subtitle, String price, Ic
               RichText(
                   text: TextSpan(
                       text: title,
-                      style: TextStyle(
+                      style: GoogleFonts.montserrat(
                         fontSize: 17.0,
-                        fontWeight: FontWeight.bold,
                         color: Colors.blueGrey,
                       ))),
               RichText(

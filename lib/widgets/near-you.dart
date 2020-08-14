@@ -1,5 +1,6 @@
 import 'package:dailyfood/common/color-common-constant.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NearYou extends StatefulWidget {
   @override
@@ -11,26 +12,66 @@ class _NearYouState extends State<NearYou> {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+            padding: const EdgeInsets.only(top: 10.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Icon(Icons.near_me, color: Colors.blueGrey,),
-                SizedBox(
-                  width: 10.0,
+                Row(
+                  children: <Widget>[
+                    Icon(Icons.near_me, color: Colors.blueGrey,),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    RichText(
+                        text: TextSpan(
+                            text: 'Near You',
+                            style: GoogleFonts.notoSans(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ))),
+                  ],
                 ),
-                RichText(
-                    text: TextSpan(
-                        text: 'Near You',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ))),
+                Row(
+                  children: <Widget>[
+                    RichText(
+                        text: TextSpan(
+                            text: 'See All',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.blueGrey,
+                            ))),
+                    SizedBox(
+                      width: 5.0,
+                    ),
+                    Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.0),
+                            color: Colors.redAccent
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Icon(Icons.arrow_forward_ios, size: 15.0, color: dfWhite,),
+                        ))
+                  ],
+                )
               ],
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10.0),
+            child: RichText(
+                text: TextSpan(
+                    text: 'Get the Best Deals Near You',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.blueGrey,
+                    ))),
           ),
           nearFoods(),
           Padding(
@@ -45,7 +86,7 @@ class _NearYouState extends State<NearYou> {
                 RichText(
                     text: TextSpan(
                         text: 'Nearby Restaurants',
-                        style: TextStyle(
+                        style: GoogleFonts.notoSans(
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
@@ -53,57 +94,86 @@ class _NearYouState extends State<NearYou> {
               ],
             ),
           ),
-          nearRestaurants(Image.asset('assets/images/gourmet-kitchen.jpg', height: 100.0,), 'The Gourmet Kitchen', ' 2km ·', ' 10mins'),
-          nearRestaurants(Image.asset('assets/images/asian-restaurant.jpeg', height: 100.0,), 'Asian Restaurant', ' 4km ·', ' 15mins'),
-          nearRestaurants(Image.asset('assets/images/basic-pizza.png', height: 100.0,), 'Basic Pizza', ' 5km ·', ' 18mins'),
-          nearRestaurants(Image.asset('assets/images/seafood-house.jpg', height: 100.0,), 'Seafood House', ' 6km ·', ' 20mins'),
-          nearRestaurants(Image.asset('assets/images/chill-out.jpg', height: 100.0,), 'Chill Out', ' 7km ·', ' 23mins')
+          nearbyRestaurants(Image.asset('assets/images/gourmet-kitchen.jpg', height: 100.0,), 'The Gourmet Kitchen', ' 2Km', ' 10mins'),
+          nearbyRestaurants(Image.asset('assets/images/asian-restaurant.jpeg', height: 100.0,), 'Asian Restaurant', ' 4Km', ' 15mins'),
+          nearbyRestaurants(Image.asset('assets/images/basic-pizza.png', height: 100.0,), 'Basic Pizza', ' 5Km', ' 18mins'),
+          nearbyRestaurants(Image.asset('assets/images/seafood-house.jpg', height: 100.0,), 'Seafood House', ' 6Km', ' 20mins'),
+          nearbyRestaurants(Image.asset('assets/images/chill-out.jpg', height: 100.0,), 'Chill Out', ' 7Km', ' 23mins'),
+          nearbyRestaurants(Image.asset('assets/images/kitchen-office.jpg', height: 100.0,), 'Kitchen Office', ' 2Km', ' 10mins'),
+          nearbyRestaurants(Image.asset('assets/images/flame-on.jpg', height: 100.0,), 'Flame On', ' 4Km', ' 15mins'),
+          nearbyRestaurants(Image.asset('assets/images/breakfast-champs.jpg', height: 100.0,), 'Breakfast Champs', ' 5Km', ' 18mins'),
+          nearbyRestaurants(Image.asset('assets/images/roadside-pickups.jpg', height: 100.0,), 'Roadside Pickups', ' 6Km', ' 20mins'),
+          nearbyRestaurants(Image.asset('assets/images/mad-chicken.jpg', height: 100.0,), 'Mad Chicken', ' 7Km', ' 23mins'),
+          Padding(
+            padding: const EdgeInsets.only(top: 15.0, left: 10.0, right: 01.0, bottom: 20.0),
+            child: Container(
+              width: 350.0,
+              height: 50.0,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                color: Colors.orangeAccent,
+              ),
+              child: Center(
+                child: RichText(
+                    text: TextSpan(
+                      text: 'See All Restaurants',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),)),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-Widget nearRestaurants(Image image, String title, String kilometer, String time) {
-  return Padding(
-    padding: const EdgeInsets.only(bottom: 8.0),
-    child: Card(
-      color: dfGray,
-      elevation: 0,
-      child: ListTile(
-        leading: image,
-        title:  RichText(
-            text: TextSpan(
-                text: title,
-                style: TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blueGrey,
-                ))),
-        subtitle:  Container(
-          child: Row(
-            children: <Widget>[
-              Icon(Icons.directions_car, color: Colors.blueGrey, size: 15.0,),
-              RichText(
-                  text: TextSpan(
-                      text: kilometer,
-                      style: TextStyle(
-                        fontSize: 15.0,
-                        color: Colors.blueGrey,
-                      ))),
-              Icon(Icons.access_alarm, color: Colors.blueGrey, size: 15.0,),
-              RichText(
-                  text: TextSpan(
-                      text: time,
-                      style: TextStyle(
-                        fontSize: 15.0,
-                        color: Colors.blueGrey,
-                      ))),
-            ],
-          )
-        ),
-        trailing: Icon(Icons.arrow_forward),
+Widget nearbyRestaurants(Image image, String restaurant, String kilometer, String time) {
+  return Card(
+    elevation: 0,
+    child: ListTile(
+      leading: image,
+      title:  RichText(
+          text: TextSpan(
+              text: restaurant,
+              style: GoogleFonts.montserrat(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w500,
+                color: Colors.blueGrey,
+              ))),
+      subtitle:  Container(
+        child: Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.directions_car, color: Colors.blueGrey, size: 15.0,),
+                RichText(
+                    text: TextSpan(
+                        text: kilometer,
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          color: Colors.black,
+                        ))),
+              ],
+            ),
+           Row(
+             children: <Widget>[
+               Icon(Icons.access_alarm, color: Colors.blueGrey, size: 15.0,),
+               RichText(
+                   text: TextSpan(
+                       text: time,
+                       style: TextStyle(
+                         fontSize: 15.0,
+                         color: Colors.black,
+                       ))),
+             ],
+           )
+          ],
+        )
       ),
+      trailing: Icon(Icons.arrow_forward_ios, size: 15.0,),
     ),
   );
 }
@@ -202,9 +272,8 @@ Widget foodTemplate(Image image, String title, String subtitle, String price, St
               RichText(
                   text: TextSpan(
                       text: title,
-                      style: TextStyle(
+                      style: GoogleFonts.montserrat(
                         fontSize: 17.0,
-                        fontWeight: FontWeight.bold,
                         color: Colors.blueGrey,
                       ))),
               RichText(

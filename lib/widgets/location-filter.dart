@@ -110,7 +110,10 @@ class _LocationFilterState extends State<LocationFilter> {
                     ),
                   ],
                 )),
-          )
+          ),
+          SizedBox(
+            height: 15.0,
+          ),
         ],
       ),
     );

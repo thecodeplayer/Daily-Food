@@ -21,6 +21,7 @@ class _DailyFoodAppState extends State<DailyFoodApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
         '/': (_) => SplashScreen(),

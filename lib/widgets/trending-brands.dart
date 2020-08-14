@@ -1,5 +1,6 @@
 import 'package:dailyfood/common/color-common-constant.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TrendingBrands extends StatefulWidget {
   @override
@@ -24,13 +25,24 @@ class _TrendingBrandsState extends State<TrendingBrands> {
               RichText(
                   text: TextSpan(
                       text: 'Trending Brands',
-                      style: TextStyle(
+                      style: GoogleFonts.notoSans(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ))),
             ],
           ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: RichText(
+              text: TextSpan(
+                  text: 'Highly Purchased Around Your Area',
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.blueGrey,
+                  ))),
         ),
         Container(
             height: 150.0,

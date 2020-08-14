@@ -1,9 +1,13 @@
 import 'package:dailyfood/common/color-common-constant.dart';
+import 'package:dailyfood/widgets/custom-divider.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stepo/stepo.dart';
 
-int _quantity;
+import 'my-bag-screen.dart';
+
+
 class AllScreen extends StatefulWidget {
   @override
   _AllScreenState createState() => _AllScreenState();
@@ -12,140 +16,164 @@ class _AllScreenState extends State<AllScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.black,), onPressed: () {
-            Navigator.pop(context);
-          }),
-        ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.shopping_basket),
-          onPressed: () {
-            addtoCart();
-          },
+        floatingActionButton: Container(
+          height: 100.0,
+          width: 65.0,
+          child: FloatingActionButton(
+            backgroundColor: Colors.redAccent,
+            child: Icon(Icons.add, size: 40.0,),
+            onPressed: () {
+              addtoCart();
+            },
+          ),
         ),
-        body: Container(
-            child: ListView(
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          RichText(
-                              text: TextSpan(
-                                  text: 'Seafood Kare-Kare',
-                                  style: TextStyle(
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.blueGrey,
-                                  ))),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 350.0,
-                      child: Hero(
-                        tag: 'seafood',
-                          child: Image.asset('assets/images/seafood-kare-kare.png')),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(right: 30.0, left: 30.0, top: 10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Row(
+        body: SafeArea(
+          child: Container(
+              child: ListView(
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Container(
+                        height: 70.0,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              RichText(
-                                  text: TextSpan(
-                                      text: 'Great Taste',
-                                      style: TextStyle(
-                                        fontSize: 23.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.blueGrey,
-                                      ))),
-                              Icon(Icons.favorite, color: Colors.red,)
-                            ],
+                          children: <Widget>[
+                            IconButton(
+                              icon: Icon(Icons.arrow_back),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.shopping_basket, size: 40.0, color: Colors.redAccent),
+                              onPressed: () {
+                                Navigator.push(context, new MaterialPageRoute(builder: (context) => MyBagScreen()));
+                              },
+                            )
+                          ],
                           ),
-                          SizedBox(
-                            height: 5.0,
-                          ),
-                          RichText(
-                              textAlign: TextAlign.justify,
-                              text: TextSpan(
-                                  text: 'Assorted seafood in peanut butter sauce, bok choy, roasted eggplant, and string beans.',
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                    color: Colors.blueGrey,
-                                  ))),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                          RichText(
-                              textAlign: TextAlign.justify,
-                              text: TextSpan(
-                                  text: 'Price',
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                    color: Colors.blueGrey,
-                                  ))),
-                          RichText(
-                              text: TextSpan(
-                                  text: 'Php 280.00',
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    color: Colors.blueGrey,
-                                  ))),
-                          SizedBox(
-                            height: 5.0,
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Icon(Icons.local_offer, color: Colors.redAccent,),
-                              RichText(
-                                  text: TextSpan(
-                                      text: ' Php 30.00 off | Use DailyFoodGT',
-                                      style: TextStyle(
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.blueGrey,
-                                      ))),
-                            ],
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                    const Divider(
-                      color: Colors.black12,
-                      height: 25.0,
-                      thickness: 1,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15.0, left: 20.0, bottom: 15.0),
-                      child: Row(
-                        children: <Widget>[
-                          RichText(
-                              text: TextSpan(
-                                  text: "Special For You",
-                                  style: TextStyle(
-                                    fontSize: 23.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ))),
-                        ],
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            RichText(
+                                text: TextSpan(
+                                    text: 'Seafood Kare-Kare',
+                                    style: TextStyle(
+                                      fontSize: 30.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blueGrey,
+                                    ))),
+                          ],
+                        ),
                       ),
-                    ),
-                    getAllContainer()
-                  ],
-                ),
-              ],
-            )
+                      Container(
+                        height: 350.0,
+                        child: Hero(
+                          tag: 'seafood',
+                            child: Image.asset('assets/images/seafood-kare-kare.png')),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(right: 30.0, left: 30.0, top: 10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                RichText(
+                                    text: TextSpan(
+                                        text: 'Great Taste',
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 23.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.blueGrey,
+                                        ))),
+                                Icon(Icons.favorite, color: Colors.red,)
+                              ],
+                            ),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            RichText(
+                                textAlign: TextAlign.justify,
+                                text: TextSpan(
+                                    text: 'Assorted seafood in peanut butter sauce, bok choy, roasted eggplant, and string beans.',
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: Colors.blueGrey,
+                                    ))),
+                            SizedBox(
+                              height: 20.0,
+                            ),
+                            RichText(
+                                textAlign: TextAlign.justify,
+                                text: TextSpan(
+                                    text: 'Price',
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: Colors.blueGrey,
+                                    ))),
+                            RichText(
+                                text: TextSpan(
+                                    text: 'Php 280.00',
+                                    style: TextStyle(
+                                      fontSize: 25.0,
+                                      color: Colors.blueGrey,
+                                    ))),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Icon(Icons.local_offer, color: Colors.redAccent,),
+                                RichText(
+                                    text: TextSpan(
+                                        text: ' Php 30.00 off | Use DailyFoodGT',
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.blueGrey,
+                                        ))),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      CustomDivider(),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15.0, left: 20.0, bottom: 15.0),
+                        child: Row(
+                          children: <Widget>[
+                            Icon(Icons.thumb_up, color: Colors.blueGrey,),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RichText(
+                                text: TextSpan(
+                                    text: "Special For You",
+                                    style: GoogleFonts.notoSans(
+                                      fontSize: 23.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ))),
+                          ],
+                        ),
+                      ),
+                      getAllContainer()
+                    ],
+                  ),
+                ],
+              )
+          ),
         ),
       ),
     );
@@ -183,14 +211,15 @@ class _AllScreenState extends State<AllScreen> {
                       height: 60.0,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.orangeAccent,
+                        color: Colors.redAccent,
                       ),
                       child: Center(
                         child: RichText(
                             text: TextSpan(
-                              text: 'Add to Cart',
+                              text: 'ADD TO BAG',
                               style: TextStyle(
                                 fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),)),
                       ),
@@ -243,24 +272,18 @@ Widget orderedAll(Image image, String title, String total, String restaurant) {
         height: 40.0,
         padding: const EdgeInsets.only(top: 8.0),
         child: Stepo(
-          width: 100.0,
+          width: 80.0,
           key: UniqueKey(),
-          backgroundColor: Colors.orangeAccent,
+          backgroundColor: Colors.redAccent,
           style: Style.horizontal,
           textColor: Colors.white,
           animationDuration: Duration(milliseconds: 100),
           iconColor: Colors.white,
           fontSize: 20,
           iconSize: 30,
-          initialCounter: _quantity,
+          initialCounter: 1,
           lowerBound: 1,
           upperBound: 10,
-          onIncrementClicked: (counter) {
-            _quantity = counter;
-          },
-          onDecrementClicked: (counter) {
-            _quantity = counter;
-          },
         ),
       ),
     ),
@@ -373,9 +396,8 @@ Widget foodTemplate(Image image, String title, String subtitle, String price, Ic
               RichText(
                   text: TextSpan(
                       text: title,
-                      style: TextStyle(
+                      style: GoogleFonts.montserrat(
                         fontSize: 17.0,
-                        fontWeight: FontWeight.bold,
                         color: Colors.blueGrey,
                       ))),
               RichText(

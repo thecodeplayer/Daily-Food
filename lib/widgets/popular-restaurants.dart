@@ -3,6 +3,7 @@ import 'package:dailyfood/screens/popular-restaurants-screen.dart';
 import 'package:dailyfood/screens/restaurant-detail-screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 
@@ -18,7 +19,7 @@ class _PopularRestaurantsState extends State<PopularRestaurants> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+          padding: const EdgeInsets.only(top: 10.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -32,7 +33,7 @@ class _PopularRestaurantsState extends State<PopularRestaurants> {
                   RichText(
                       text: TextSpan(
                           text: 'Popular Restaurants',
-                          style: TextStyle(
+                          style: GoogleFonts.notoSans(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
@@ -43,17 +44,44 @@ class _PopularRestaurantsState extends State<PopularRestaurants> {
                 onTap: () {
                   Navigator.push(context, new MaterialPageRoute(builder: (context) => PopularRestaurantsScreen()));
                 },
-                child: RichText(
-                    text: TextSpan(
-                        text: 'View All',
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.blueGrey,
-                        ))),
+                child: Row(
+                  children: <Widget>[
+                    RichText(
+                        text: TextSpan(
+                            text: 'See All',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.blueGrey,
+                            ))),
+                    SizedBox(
+                      width: 5.0,
+                    ),
+                    Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.0),
+                            color: Colors.redAccent
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Icon(Icons.arrow_forward_ios, size: 15.0, color: dfWhite,),
+                        ))
+                  ],
+                )
               ),
             ],
           ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: RichText(
+              text: TextSpan(
+                  text: 'We Listen to the Food',
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.blueGrey,
+                  ))),
         ),
         SizedBox(
           height: 10.0,
@@ -146,13 +174,13 @@ Widget popularRestaurants(Image image, String restaurant, String location, Strin
                   RichText(
                       text: TextSpan(
                           text: restaurant,
-                          style: TextStyle(
+                          style: GoogleFonts.montserrat(
                             fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             color: Colors.blueGrey,
                           ))),
                   SizedBox(
-                    width: 10.0,
+                    width: 7.0,
                   ),
                   Icon(Icons.check_circle, color: Colors.green,)
                 ],
